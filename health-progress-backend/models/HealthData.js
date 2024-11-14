@@ -1,11 +1,10 @@
-// Example model structure
-class HealthData {
-    constructor(userId, date, healthMetric, value) {
-        this.userId = userId;
-        this.date = date;
-        this.healthMetric = healthMetric;
-        this.value = value;
-    }
-}
+const mongoose = require('mongoose');
 
-module.exports = HealthData;
+const healthSchema = new mongoose.Schema({
+  patientId: String,
+  bloodPressure: String,
+  glucoseLevel: String,
+  date: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('HealthData', healthSchema);

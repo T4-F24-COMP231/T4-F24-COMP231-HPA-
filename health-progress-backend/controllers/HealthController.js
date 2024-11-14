@@ -1,13 +1,22 @@
 const HealthData = require('../models/HealthData');
 
-exports.getHealthData = (req, res) => {
-    // Example response
-    res.json({ message: 'Fetching health data' });
+// Add Health Data
+exports.addHealthData = async (req, res) => {
+  try {
+    const newData = new HealthData(req.body);
+    await newData.save();
+    res.status(201).json(newData);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-exports.createHealthData = (req, res) => {
-    const { userId, date, healthMetric, value } = req.body;
-    const newHealthData = new HealthData(userId, date, healthMetric, value);
-    // Process to save or manipulate data 
-    res.json({ message: 'Health data created', data: newHealthData });
+// Get All Health Data
+exports.getAllHealthData = async (req, res) => {
+  try {
+    const data = await HealthData.find();
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
