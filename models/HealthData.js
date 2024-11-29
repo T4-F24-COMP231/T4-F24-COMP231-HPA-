@@ -1,4 +1,4 @@
-// Example model structure
+
 class HealthData {
     constructor(userId, date, healthMetric, value) {
         this.userId = userId;
