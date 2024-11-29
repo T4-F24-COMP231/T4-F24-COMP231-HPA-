@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
 
-const healthSchema = new mongoose.Schema({
-  patientId: String,
-  bloodPressure: String,
-  glucoseLevel: String,
-  date: { type: Date, default: Date.now }
+const HealthDataSchema = new mongoose.Schema({
+  bloodPressure: {
+    type: Number,
+    required: true,
+  },
+  glucoseLevel: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('HealthData', healthSchema);
+const HealthData = mongoose.model('HealthData', HealthDataSchema);
+
+module.exports = HealthData;
