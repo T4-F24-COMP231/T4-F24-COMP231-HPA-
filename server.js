@@ -1,17 +1,24 @@
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables
 const express = require('express');
-const healthRoutes = require('./routes/HealthRoutes');
-const appointmentController = require('../controllers/AppointmentController');
+const session = require('express-session');
+const fitbitRoutes = require('./routes/fitbitRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON
+// Middleware
 app.use(express.json());
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
+);
 
-// Routes
-app.use('/api/health', healthRoutes); // Health-related routes
-app.use('/api/appointments', appointmentRoutes); // Appointment-related routes
+// Register Fitbit routes
+app.use('/auth/fitbit', fitbitRoutes);
+
 
 // Start the server
 app.listen(PORT, () => {
