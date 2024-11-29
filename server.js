@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const healthRoutes = require('./routes/HealthRoutes');
-const appointmentRoutes = require('./routes/AppointmentRoutes');
+const appointmentController = require('../controllers/AppointmentController');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
