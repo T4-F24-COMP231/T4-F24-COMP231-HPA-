@@ -13,5 +13,13 @@
 
 
 
+| http://127.0.0.1:5001/api/patient_crud/patients | GET  | get all patient |      |
+| ----------------------------------------------- | ---- | --------------- | ---- |
+| http://127.0.0.1:5001/api/patient_crud/patients | POST | add new patient |      |
+|                                                 |      |                 |      |
+|                                                 |      |                 |      |
+
+
+
 
 # Implement real-time data syncing for health metrics like heart rate, steps, and sleep patterns.
