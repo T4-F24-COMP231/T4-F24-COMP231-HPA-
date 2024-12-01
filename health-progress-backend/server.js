@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const healthRoutes = require('./routes/healthRoutes');
 const patientCrud = require('./routes/patientCrud');
+const healthMetrics = require('./routes/healthMetrics');
 const {forTest} = require("./controllers/patientCrudController");
 
 dotenv.config();
@@ -20,6 +21,8 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 app.use('/api/health', healthRoutes);
 app.use('/api/patient_crud', patientCrud);  //patient_crud api
+app.use('/api/health_metrics', healthMetrics);  //health_metrics api
+
 // app.get('/test', forTest);
 
 const PORT = process.env.PORT || 5000;
