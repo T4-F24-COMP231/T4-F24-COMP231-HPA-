@@ -1,10 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/HomeScreen'; // Import HomeScreen
-import AppointmentsScreen from '../screens/AppointmentsScreen'; // Import AppointmentsScreen
-import HealthDashboard from '../components/HealthDashboard'; // Import HealthDashboard
-import { Ionicons } from '@expo/vector-icons'; // Icon library
-
+import HomeScreen from '../screens/HomeScreen'; 
+import AppointmentsScreen from '../screens/AppointmentsScreen'; 
+import HealthDashboard from '../components/HealthDashboard'; 
+import { Ionicons } from '@expo/vector-icons'; 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -20,14 +19,14 @@ export default function BottomTabNavigator() {
           } else if (route.name === 'Appointments') {
             iconName = focused ? 'calendar' : 'calendar-outline';
           } else if (route.name === 'HealthDashboard') {
-            iconName = focused ? 'stats-chart' : 'stats-chart-outline'; // Icon for HealthDashboard
+            iconName = focused ? 'stats-chart' : 'stats-chart-outline'; 
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#FF6347',
         tabBarInactiveTintColor: 'gray',
-        headerShown: false, // Hide header for BottomTabNavigator
+        headerShown: false,
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />

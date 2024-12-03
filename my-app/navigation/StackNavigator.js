@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import WelcomeScreen from '../screens/WelcomeScreen'; // Adjust path as necessary
-import MetricsOverview from '../screens/MetricsOverview'; // Adjust path as necessary
-import HealthMetricsScreen from '../screens/HealthMetricsScreen'; // Adjust path as necessary
-import HealthDashboard from '../components/HealthDashboard'; // Import HealthDashboard
+import WelcomeScreen from '../screens/WelcomeScreen'; 
+import MetricsOverview from '../screens/MetricsOverview'; 
+import HealthMetricsScreen from '../screens/HealthMetricsScreen'; 
+import HealthDashboard from '../components/HealthDashboard'; 
 
 const Stack = createStackNavigator();
 

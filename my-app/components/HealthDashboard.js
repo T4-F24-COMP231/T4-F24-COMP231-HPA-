@@ -6,10 +6,10 @@ const HealthDashboard = () => {
     { name: 'Blood Pressure', value: '117 SYS / 76 DIA / 42 PUL' },
     { name: 'Heart Rate', value: '84 bpm' },
     { name: 'Steps', value: '8,000 Steps' },
-    { name: 'Oxygen Level', value: '98%' }, // Added Oxygen Level
+    { name: 'Oxygen Level', value: '98%' }, 
   ]);
 
-  // Simulate dynamic updates every 5 seconds
+ 
   useEffect(() => {
     const interval = setInterval(() => {
       setMetrics((prevMetrics) =>
@@ -45,7 +45,7 @@ const HealthDashboard = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000', // Dark theme
+    backgroundColor: '#000', 
     padding: 20,
   },
   title: {
