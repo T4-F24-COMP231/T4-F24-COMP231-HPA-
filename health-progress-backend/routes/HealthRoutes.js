@@ -1,5 +1,5 @@
 const express = require('express');
-const HealthData = require('../models/HealthData');
+const HealthData =  require('../models/HealthData');
 const router = express.Router();
 
 // Get all health data
