@@ -1,22 +1,23 @@
 const HealthData = require('../models/HealthData');
 
-// Add Health Data
-exports.addHealthData = async (req, res) => {
-  try {
-    const newData = new HealthData(req.body);
-    await newData.save();
-    res.status(201).json(newData);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+// In-memory store for demo purposes (replace with DB)
+const healthDataStore = [];
+
+// Get all health data
+exports.getHealthData = (req, res) => {
+    res.status(200).json({ message: 'Health data retrieved successfully', data: healthDataStore });
 };
 
-// Get All Health Data
-exports.getAllHealthData = async (req, res) => {
-  try {
-    const data = await HealthData.find();
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+// Create new health data
+exports.createHealthData = (req, res) => {
+    const { userId, date, healthMetric, value } = req.body;
+
+    if (!userId || !date || !healthMetric || value === undefined) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    const newHealthData = new HealthData(userId, date, healthMetric, value);
+    healthDataStore.push(newHealthData);
+
+    res.status(201).json({ message: 'Health data created successfully', data: newHealthData });
 };
