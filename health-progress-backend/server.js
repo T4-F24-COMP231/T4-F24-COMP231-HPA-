@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const healthRoutes = require('./routes/healthRoutes');
+const healthRoutes = require('./routes/HealthRoutes');
 
 dotenv.config();
 
