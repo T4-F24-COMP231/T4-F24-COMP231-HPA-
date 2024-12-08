@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 export default function AppointmentsScreen() {
+  const navigation = useNavigation();
   const appointments = [
     {
       id: '1',
@@ -36,7 +37,7 @@ export default function AppointmentsScreen() {
       </View>
 
       {/* Appointments Section */}
-      <Text style={styles.sectionTitle}>Appointments</Text>
+      <Text style={styles.sectionTitle}>Appointments</Text> 
       <FlatList
         data={appointments}
         keyExtractor={(item) => item.id}
@@ -66,7 +67,10 @@ export default function AppointmentsScreen() {
       />
 
       {/* New Appointment Button */}
-      <TouchableOpacity style={styles.newAppointmentButton}>
+      <TouchableOpacity
+        style={styles.newAppointmentButton}
+        onPress={() => navigation.navigate('NewAppointment')}
+      >
         <Text style={styles.newAppointmentText}>+ New Appointment</Text>
       </TouchableOpacity>
     </View>
