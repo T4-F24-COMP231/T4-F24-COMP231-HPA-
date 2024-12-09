@@ -1,21 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Linking } from 'react-native';
 
 export default function ProfileScreen({ navigation }) {
   const handleReportIssue = () => {
-    Alert.alert(
-      'Report Technical Issue',
-      'You can report technical issues via email to support@hpa.com or call our support line.',
-      [{ text: 'OK' }]
-    );
+    navigation.navigate('ReportIssueScreen'); // Navigate to ReportIssueScreen
   };
 
   const handleHelp = () => {
-    navigation.navigate('HelpScreen'); // Navigate to a Help screen (optional)
+    const guideUrl = 'https://www.dropbox.com/scl/fi/slx9r4l98pvejau1lq60s/User-Guide-for-Health-Progress-App.docx?rlkey=1xtq12sv0hvs539t9jkummkav&st=5zjgw024&dl=0'; 
+
+    // Attempt to open the guide URL
+    Linking.canOpenURL(guideUrl)
+      .then((supported) => {
+        if (supported) {
+          Linking.openURL(guideUrl); // Opens the guide in the browser or downloads it
+        } else {
+          Alert.alert('Error', 'Unable to open the guide. Please try again later.');
+        }
+      })
+      .catch((err) => console.error('Error opening guide:', err));
   };
 
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* User Information Section */}
       <View style={styles.infoSection}>
         <Text style={styles.title}>John J's Profile</Text>
@@ -36,19 +44,16 @@ export default function ProfileScreen({ navigation }) {
       <View style={styles.metricsSection}>
         <Text style={styles.sectionTitle}>Metrics Overview</Text>
 
-        {/* Blood Pressure Metric */}
         <View style={styles.metricCard}>
           <Text style={styles.metricTitle}>Blood Pressure</Text>
           <Text style={styles.metricValue}>117 SYS / 76 DIA / 42 PUL</Text>
         </View>
 
-        {/* Heart Rate Metric */}
         <View style={styles.metricCard}>
           <Text style={styles.metricTitle}>Heart Rate</Text>
           <Text style={styles.metricValue}>84 bpm</Text>
         </View>
 
-        {/* Steps Metric */}
         <View style={styles.metricCard}>
           <Text style={styles.metricTitle}>Steps Taken</Text>
           <Text style={styles.metricValue}>8,000 Steps</Text>
@@ -65,7 +70,7 @@ export default function ProfileScreen({ navigation }) {
           <Text style={styles.optionText}>Report Technical Issues</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

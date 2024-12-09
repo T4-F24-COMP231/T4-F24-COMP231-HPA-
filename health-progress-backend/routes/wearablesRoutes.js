@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const WearableData = require('../models/WearableData'); // Adjust path if necessary
+const WearableData = require('../models/WearableData'); 
+const Device = require('../models/Device');
 
 router.post('/syncWearable', async (req, res) => {
   const { userId, heartRate, steps, sleepHours } = req.body;
+  
+  const device = await Device.findOne({ deviceId, allowedUserId: userId });
+  if (!device) {
+    return res.status(403).json({ error: 'Device not authorized.' });
+  }
 
   // Validate input
   if (!userId || !heartRate || !steps || !sleepHours) {
@@ -11,9 +17,10 @@ router.post('/syncWearable', async (req, res) => {
   }
 
   try {
+    const objectId = mongoose.Types.ObjectId(userId);
     // Save wearable data to the database
     const wearableData = new WearableData({
-      userId,
+      userId: objectId,
       heartRate,
       steps,
       sleepHours,

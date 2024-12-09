@@ -4,6 +4,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import MetricsOverview from '../screens/MetricsOverview';
 import HealthMetricsScreen from '../screens/HealthMetricsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+
 const Stack = createStackNavigator();
 
 export default function StackNavigator() {
@@ -39,7 +40,6 @@ export default function StackNavigator() {
           headerTintColor: "#fff",
         }}
       />
-
     </Stack.Navigator>
   );
 }

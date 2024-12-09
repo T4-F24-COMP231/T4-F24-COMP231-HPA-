@@ -1,33 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 export default function SyncIntroScreen({ navigation }) {
-  const [syncStatus, setSyncStatus] = useState('Not Synced');
-
-  const handleSync = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/syncWearable', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: '12345',
-          heartRate: 80,
-          steps: 10000,
-          sleepHours: 7,
-        }),
-      });
-
-      if (response.ok) {
-        setSyncStatus('Sync successful!');
-      } else {
-        setSyncStatus('Sync failed.');
-      }
-    } catch (error) {
-      console.error('Sync error:', error);
-      setSyncStatus('Error syncing data.');
-    }
-  };
-
   return (
     <View style={styles.container}>
       {/* Add Watch Image */}
@@ -42,18 +16,18 @@ export default function SyncIntroScreen({ navigation }) {
         Before jumping into it, we suggest you set up your wearable device.
       </Text>
 
-      {/* Sync Now Button */}
-      <TouchableOpacity style={styles.syncButton} onPress={handleSync}>
-        <Text style={styles.syncButtonText}>Sync Now</Text>
+      {/* Navigate to Device List for Registration */}
+      <TouchableOpacity
+        style={styles.registerButton}
+        onPress={() => navigation.navigate('DeviceList')} // Navigate to list of available devices
+      >
+        <Text style={styles.registerButtonText}>Sync Device</Text>
       </TouchableOpacity>
-
-      {/* Sync Status */}
-      <Text style={styles.syncStatus}>{syncStatus}</Text>
 
       {/* Navigate to Device List */}
       <TouchableOpacity
         style={styles.deviceListButton}
-        onPress={() => navigation.navigate('DeviceList')}
+        onPress={() => navigation.navigate('DeviceList')} // Navigate to the same list of devices
       >
         <Text style={styles.deviceListButtonText}>View Devices</Text>
       </TouchableOpacity>
@@ -86,23 +60,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
   },
-  syncButton: {
-    backgroundColor: '#FF6347',
+  registerButton: {
+    backgroundColor: '#4CAF50',
     borderRadius: 25,
     padding: 15,
     width: '80%',
     alignItems: 'center',
     marginBottom: 10,
   },
-  syncButtonText: {
+  registerButtonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  syncStatus: {
-    color: '#fff',
-    fontSize: 14,
-    marginTop: 10,
   },
   deviceListButton: {
     backgroundColor: '#007BFF',

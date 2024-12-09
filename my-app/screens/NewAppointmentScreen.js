@@ -5,23 +5,52 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Picker } from '@react-native-picker/picker';
 
 export default function NewAppointmentScreen() {
+  const [specialists] = useState([
+    { id: '1', name: 'Dr. Reeves Keanu', specialization: 'Dermatology' },
+    { id: '2', name: 'Dr. Kevin Hart', specialization: 'Entomology' },
+    { id: '3', name: 'Dr. Lebron James', specialization: 'Optomology' },
+    { id: '4', name: 'Dr. Kevin Durant', specialization: 'Radiology' },
+    { id: '5', name: 'Dr. Antony Edwards', specialization: 'Therapist' },
+  ]);
   const [specialist, setSpecialist] = useState('');
   const [date, setDate] = useState({ day: '', month: '', year: '' });
   const [appointmentType, setAppointmentType] = useState('');
   const [location, setLocation] = useState('');
 
-  const handleCreateAppointment = () => {
-    alert('Appointment created successfully with the following details:\n' +
-      `Specialist: ${specialist}\n` +
-      `Date: ${date.day}/${date.month}/${date.year}\n` +
-      `Type: ${appointmentType}\n` +
-      `Location: ${location}`);
+  const handleCreateAppointment = async () => {
+    if (!specialist || !date.day || !date.month || !date.year || !appointmentType) {
+      return Alert.alert('Error', 'Please fill in all the fields.');
+    }
+
+    try {
+      const response = await fetch('http://10.0.2.2:5000/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: '648d82cfd9e5e1f32bfe67a3', // Replace with dynamic user ID
+          providerId: specialist,
+          date: `${date.day}/${date.month}/${date.year}`,
+          time: '10:00 AM', // Static for now, can be made dynamic
+        }),
+      });
+
+      if (response.ok) {
+        Alert.alert('Success', 'Appointment created successfully!');
+      } else {
+        Alert.alert('Error', 'Failed to create appointment. Try again.');
+      }
+    } catch (error) {
+      console.error('Error creating appointment:', error);
+      Alert.alert('Error', 'An error occurred. Try again.');
+    }
   };
+
 
   return (
     <View style={styles.container}>
@@ -41,11 +70,9 @@ export default function NewAppointmentScreen() {
         style={styles.picker}
       >
         <Picker.Item label="Choose a Specialist" value="" />
-        <Picker.Item label="Reeves Keaunu" value="Reeves Keaunu" />
-        <Picker.Item label="Kevin Gates" value="Kevin Gates" />
-        <Picker.Item label="Lebron James" value="Lebron James" />
-        <Picker.Item label="Kevin Durant" value="Kevin Durant" />
-        <Picker.Item label="Antony Edwards" value="Antony Edwards" />
+        {specialists.map((s) => (
+          <Picker.Item key={s.id} label={s.name} value={s.id} />
+        ))}
       </Picker>
 
       {/* Date Input */}
