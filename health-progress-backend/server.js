@@ -4,6 +4,11 @@ const dotenv = require('dotenv');
 const healthRoutes = require('./routes/HealthRoutes');
 const wearableRoutes = require('./routes/wearablesRoutes')
 const healthMetricsRouter = require('./routes/healthMetrics');
+const healthRoutes = require('./routes/healthRoutes');
+const patientCrud = require('./routes/patientCrud');
+const healthMetrics = require('./routes/healthMetrics');
+const {forTest} = require("./controllers/patientCrudController");
+
 dotenv.config();
 
 const app = express();
@@ -21,6 +26,11 @@ app.use('/health', healthRoutes);
 app.use('/api', wearableRoutes);
 app.use('/api', healthMetricsRouter);
 
+app.use('/api/health', healthRoutes);
+app.use('/api/patient_crud', patientCrud);  //patient_crud api
+app.use('/api/health_metrics', healthMetrics);  //health_metrics api
+
+// app.get('/test', forTest);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
