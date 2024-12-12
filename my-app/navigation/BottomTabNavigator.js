@@ -9,10 +9,8 @@ import MessagingStackNavigator from './MessagingStackNavigator'; // Messaging St
 import HomeStackNavigator from './HomeStackNavigator';
 import HealthMetricsScreen from '../screens/HealthMetricsScreen';
 
-import HomeScreen from '../screens/HomeScreen'; 
 import AppointmentsScreen from '../screens/AppointmentsScreen'; 
 import HealthDashboard from '../components/HealthDashboard'; 
-import { Ionicons } from '@expo/vector-icons'; 
 
 const Tab = createBottomTabNavigator();
 
@@ -54,9 +52,6 @@ export default function BottomTabNavigator() {
       <Tab.Screen name="Messages" component={MessagingStackNavigator} />
       <Tab.Screen name="HealthMetrics" component={HealthMetricsScreen} />
 
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Appointments" component={AppointmentsScreen} />
-      <Tab.Screen name="HealthDashboard" component={HealthDashboard} />
 
     </Tab.Navigator>
   );
