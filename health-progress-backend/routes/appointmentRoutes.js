@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Appointment = require('../models/appointment');
 
 // Schedule an appointment
 router.post('/appointments', async (req, res) => {
