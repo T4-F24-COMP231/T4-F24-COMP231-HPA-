@@ -1,3 +1,11 @@
+
+import React from 'react';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+export default function AppointmentsScreen() {
+  const navigation = useNavigation();
+  const appointments = [
+
 import React, { useState } from 'react';
 import {
   View,
@@ -11,6 +19,7 @@ import {
 
 export default function AppointmentsScreen() {
   const [appointments, setAppointments] = useState([
+
     {
       id: '1',
       name: 'Reeves Keaunu',
@@ -81,7 +90,7 @@ export default function AppointmentsScreen() {
       ) : null}
 
       {/* Appointments Section */}
-      <Text style={styles.sectionTitle}>Appointments</Text>
+      <Text style={styles.sectionTitle}>Appointments</Text> 
       <FlatList
         data={appointments}
         keyExtractor={(item) => item.id}
@@ -119,6 +128,15 @@ export default function AppointmentsScreen() {
           setNewAppointment((prev) => ({ ...prev, name: text }))
         }
       />
+
+
+      {/* New Appointment Button */}
+      <TouchableOpacity
+        style={styles.newAppointmentButton}
+        onPress={() => navigation.navigate('NewAppointment')}
+      >
+        <Text style={styles.newAppointmentText}>+ New Appointment</Text>
+
       <TextInput
         style={styles.input}
         placeholder="Message"
@@ -145,6 +163,7 @@ export default function AppointmentsScreen() {
       />
       <TouchableOpacity style={styles.newAppointmentButton} onPress={handleAddAppointment}>
         <Text style={styles.newAppointmentText}>Add Appointment</Text>
+
       </TouchableOpacity>
     </View>
   );

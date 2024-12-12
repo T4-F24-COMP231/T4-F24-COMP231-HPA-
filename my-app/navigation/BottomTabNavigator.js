@@ -1,9 +1,19 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import HomeScreen from '../screens/HomeScreen';
+import AppointmentsStackNavigator from './AppointmentsStackNavigator';
+import { Ionicons } from '@expo/vector-icons';
+import SyncNavigator from '../navigation/SyncNavigator';
+import MessagingStackNavigator from './MessagingStackNavigator'; // Messaging Stack
+import HomeStackNavigator from './HomeStackNavigator';
+import HealthMetricsScreen from '../screens/HealthMetricsScreen';
+
 import HomeScreen from '../screens/HomeScreen'; 
 import AppointmentsScreen from '../screens/AppointmentsScreen'; 
 import HealthDashboard from '../components/HealthDashboard'; 
 import { Ionicons } from '@expo/vector-icons'; 
+
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -17,9 +27,17 @@ export default function BottomTabNavigator() {
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Appointments') {
+
+            iconName = focused ? 'calendar' : 'calendar-outline'; // Icons for Appointments
+          } else if (route.name === 'Sync') {
+            iconName = focused ? 'sync' : 'sync-outline'; // Icons for Sync
+          } else if (route.name === 'Messages') {
+            iconName = focused ? 'chatbubbles' : 'chatbubbles-outline'; // Icons for Messages
+
             iconName = focused ? 'calendar' : 'calendar-outline';
           } else if (route.name === 'HealthDashboard') {
             iconName = focused ? 'stats-chart' : 'stats-chart-outline'; 
+
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -29,9 +47,17 @@ export default function BottomTabNavigator() {
         headerShown: false,
       })}
     >
+
+       <Tab.Screen name="Home" component={HomeStackNavigator} />
+      <Tab.Screen name="Appointments" component={AppointmentsStackNavigator} />
+      <Tab.Screen name="Sync" component={SyncNavigator} />
+      <Tab.Screen name="Messages" component={MessagingStackNavigator} />
+      <Tab.Screen name="HealthMetrics" component={HealthMetricsScreen} />
+
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Appointments" component={AppointmentsScreen} />
       <Tab.Screen name="HealthDashboard" component={HealthDashboard} />
+
     </Tab.Navigator>
   );
 }

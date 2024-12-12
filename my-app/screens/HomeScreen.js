@@ -1,13 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
+
   return (
     <ScrollView style={styles.container}>
       {/* Top Section */}
       <View style={styles.header}>
-        <Text style={styles.watchName}>John's Watch</Text>
-        <Text style={styles.profile}>JOHN J</Text>
+        <View style={styles.watchSection}>
+          <Image
+            source={require('../assets/watch.png')} 
+            style={styles.watchIcon}
+          />
+          <Text style={styles.watchName}>John's Watch</Text>
+        </View>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <View style={styles.profileIcon}>
+            <Text style={styles.profileIconText}>J</Text> 
+          </View>
+        </TouchableOpacity>
       </View>
 
       {/* Metrics Overview */}
@@ -47,12 +61,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
+  watchSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  watchIcon: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
+  },
   watchName: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
-  profile: {
+  profileIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#FF6347', // Use your preferred color
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  profileIconText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',

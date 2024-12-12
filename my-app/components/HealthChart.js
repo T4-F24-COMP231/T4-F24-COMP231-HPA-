@@ -5,12 +5,10 @@ import { Dimensions, View, Text } from 'react-native';
 const HealthChart = ({ healthData }) => {
   const screenWidth = Dimensions.get('window').width;
 
-  // Check if healthData is valid
   if (!healthData || healthData.length === 0) {
     return <Text style={{ textAlign: 'center', marginTop: 20 }}>No health data available</Text>;
   }
 
-  // Ensure dates and numeric values are valid
   const labels = healthData.map((data, index) => {
     const date = new Date(data.date);
     return index % Math.ceil(healthData.length / 5) === 0
@@ -18,8 +16,8 @@ const HealthChart = ({ healthData }) => {
       : '';
   });
 
-  const bloodPressureData = healthData.map(data => isFinite(data.bloodPressure) ? data.bloodPressure : 0);
-  const glucoseLevelData = healthData.map(data => isFinite(data.glucoseLevel) ? data.glucoseLevel : 0);
+  const bloodPressureData = healthData.map(data => data.bloodPressure || 0);
+  const glucoseLevelData = healthData.map(data => data.glucoseLevel || 0);
 
   const data = {
     labels,
@@ -33,9 +31,9 @@ const HealthChart = ({ healthData }) => {
         data: glucoseLevelData,
         color: (opacity = 1) => `rgba(0, 0, 255, ${opacity})`,
         strokeWidth: 2,
-      }
+      },
     ],
-    legend: ['Blood Pressure', 'Glucose Level']
+    legend: ['Blood Pressure', 'Glucose Level'],
   };
 
   return (
@@ -43,12 +41,12 @@ const HealthChart = ({ healthData }) => {
       <Text style={{ textAlign: 'center', fontWeight: 'bold', marginBottom: 10 }}>Health Metrics Over Time</Text>
       <LineChart
         data={data}
-        width={Math.min(screenWidth - 40, 400)}  // Ensure proper width
+        width={Math.min(screenWidth - 40, 400)}
         height={220}
         chartConfig={{
-          backgroundColor: '#f5a623',
-          backgroundGradientFrom: '#ff7f50',
-          backgroundGradientTo: '#ff6347',
+          backgroundColor: '#000',
+          backgroundGradientFrom: '#222',
+          backgroundGradientTo: '#444',
           decimalPlaces: 1,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
