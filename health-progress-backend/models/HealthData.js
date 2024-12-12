@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const HealthData = require('../models/HealthData');
@@ -18,6 +19,17 @@ router.get('/healthMetrics', async (req, res) => {
 router.post('/healthMetrics', async (req, res) => {
   try {
     const { bloodPressure, glucoseLevel } = req.body;
+
+
+class HealthData {
+    constructor(userId, date, healthMetric, value) {
+        this.userId = userId;
+        this.date = date;
+        this.healthMetric = healthMetric;
+        this.value = value;
+    }
+}
+
 
     if (!bloodPressure || !glucoseLevel) {
       return res.status(400).json({ error: 'Blood Pressure and Glucose Level are required.' });
