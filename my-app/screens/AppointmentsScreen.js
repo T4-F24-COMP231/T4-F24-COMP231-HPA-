@@ -1,18 +1,8 @@
 
-import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-export default function AppointmentsScreen() {
-  const navigation = useNavigation();
-  const appointments = [
-
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
   TextInput,
   Alert,
 } from 'react-native';
@@ -130,13 +120,6 @@ export default function AppointmentsScreen() {
       />
 
 
-      {/* New Appointment Button */}
-      <TouchableOpacity
-        style={styles.newAppointmentButton}
-        onPress={() => navigation.navigate('NewAppointment')}
-      >
-        <Text style={styles.newAppointmentText}>+ New Appointment</Text>
-
       <TextInput
         style={styles.input}
         placeholder="Message"
@@ -163,7 +146,6 @@ export default function AppointmentsScreen() {
       />
       <TouchableOpacity style={styles.newAppointmentButton} onPress={handleAddAppointment}>
         <Text style={styles.newAppointmentText}>Add Appointment</Text>
-
       </TouchableOpacity>
     </View>
   );

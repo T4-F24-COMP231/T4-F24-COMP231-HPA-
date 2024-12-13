@@ -8,7 +8,7 @@ const healthMetricsRouter = require('./routes/healthMetrics');
 const deviceRoutes = require('./routes/deviceRoutes');
 const issueRoutes = require('./routes/issueRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes');
-const providerRoutes = require('./routes/providerRoutes');
+// const providerRoutes = require('./routes/providerRoutes');
 const messageRoutes = require('./routes/messagingRoutes');
 
 dotenv.config();
@@ -42,8 +42,8 @@ app.use('/api/metrics', healthMetricsRouter);
 app.use('/api/devices', deviceRoutes);
 app.use('/api/issues', issueRoutes);
 app.use('/api', appointmentRoutes);
-app.use('/api', providerRoutes);
-app.use('/api', messageRoutes);
+// app.use('/api', providerRoutes);
+// app.use('/api', messageRoutes);
 
 
 // Start the server
