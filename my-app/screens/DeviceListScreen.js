@@ -17,7 +17,7 @@ export default function DeviceListScreen() {
 
   const fetchDevices = async () => {
     try {
-        const response = await fetch('http://10.0.2.2:5000/api/devices/discoverDevices');
+        const response = await fetch('http://localhost:5000/api/devices/discoverDevices');
         if (!response.ok) {
             console.error(`Error: ${response.status} - ${response.statusText}`);
             return;

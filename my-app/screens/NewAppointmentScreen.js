@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
-// import MapView, { Marker } from 'react-native-maps';
 import { Picker } from '@react-native-picker/picker';
 
 export default function NewAppointmentScreen() {
@@ -122,22 +121,7 @@ export default function NewAppointmentScreen() {
         style={styles.input}
       />
 
-      {/* Map View
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      >
-        <Marker
-          coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
-          title="Your Location"
-        />
-      </MapView>
- */}
+     
       {/* Create Appointment Button */}
       <TouchableOpacity style={styles.createButton} onPress={handleCreateAppointment}>
         <Text style={styles.createButtonText}>Create Your Appointment</Text>

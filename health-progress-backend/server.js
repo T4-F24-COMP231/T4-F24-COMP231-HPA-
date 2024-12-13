@@ -41,7 +41,7 @@ app.use('/api/wearables', wearableRoutes);
 app.use('/api/metrics', healthMetricsRouter);
 app.use('/api/devices', deviceRoutes);
 app.use('/api/issues', issueRoutes);
-// app.use('/api', appointmentRoutes);
+app.use('/api', appointmentRoutes);
 // app.use('/api', providerRoutes);
 // app.use('/api', messageRoutes);
 
