@@ -32,7 +32,7 @@ export default function StackNavigator() {
         name="MetricsOverview"
         component={MetricsOverview}
 
-        options={{ headerTitle: 'Health Metrics' }}
+  
 
         options={{
           headerTitle: 'Metrics Overview',
