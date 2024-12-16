@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 export default function SyncIntroScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      {/* Add Watch Image */}
+     
       <Image
         source={require('../assets/watch.png')}
         style={styles.watchImage}
@@ -16,18 +16,18 @@ export default function SyncIntroScreen({ navigation }) {
         Before jumping into it, we suggest you set up your wearable device.
       </Text>
 
-      {/* Navigate to Device List for Registration */}
+      
       <TouchableOpacity
         style={styles.registerButton}
-        onPress={() => navigation.navigate('DeviceList')} // Navigate to list of available devices
+        onPress={() => navigation.navigate('DeviceList')} 
       >
         <Text style={styles.registerButtonText}>Sync Device</Text>
       </TouchableOpacity>
 
-      {/* Navigate to Device List */}
+   
       <TouchableOpacity
         style={styles.deviceListButton}
-        onPress={() => navigation.navigate('DeviceList')} // Navigate to the same list of devices
+        onPress={() => navigation.navigate('DeviceList')} 
       >
         <Text style={styles.deviceListButtonText}>View Devices</Text>
       </TouchableOpacity>
@@ -44,9 +44,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   watchImage: {
-    width: 200, // Adjust width as needed
-    height: 200, // Adjust height as needed
-    marginBottom: 20, // Add spacing between the image and text
+    width: 200, 
+    height: 200, 
+    marginBottom: 20, 
   },
   title: {
     fontSize: 24,

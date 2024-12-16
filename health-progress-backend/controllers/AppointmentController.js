@@ -1,6 +1,6 @@
 const Appointment = require('../models/Appointment');
 
-// Schedule an appointment
+
 exports.scheduleAppointment = async (req, res) => {
     try {
         const { patientId, providerId, appointmentDate } = req.body;
@@ -18,7 +18,7 @@ exports.scheduleAppointment = async (req, res) => {
     }
 };
 
-// Reschedule an appointment
+
 exports.rescheduleAppointment = async (req, res) => {
     try {
         const { id } = req.params;
@@ -40,7 +40,6 @@ exports.rescheduleAppointment = async (req, res) => {
     }
 };
 
-// Cancel an appointment
 exports.cancelAppointment = async (req, res) => {
     try {
         const { id } = req.params;

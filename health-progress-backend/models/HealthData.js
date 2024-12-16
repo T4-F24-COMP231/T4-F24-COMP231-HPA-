@@ -3,11 +3,9 @@ const express = require('express');
 const router = express.Router();
 const HealthData = require('../models/HealthData');
 
-// GET: Fetch all health data
 router.get('/healthMetrics', async (req, res) => {
   try {
-    // Fetch health data from the database
-    const healthMetrics = await HealthData.find().sort({ date: -1 }); // Sort by date (latest first)
+    const healthMetrics = await HealthData.find().sort({ date: -1 }); 
     res.status(200).json(healthMetrics);
   } catch (error) {
     console.error('Error fetching health data:', error);
@@ -15,7 +13,7 @@ router.get('/healthMetrics', async (req, res) => {
   }
 });
 
-// POST: Add new health data
+
 router.post('/healthMetrics', async (req, res) => {
   try {
     const { bloodPressure, glucoseLevel } = req.body;
@@ -35,13 +33,13 @@ class HealthData {
       return res.status(400).json({ error: 'Blood Pressure and Glucose Level are required.' });
     }
 
-    // Create a new health data entry
+   
     const newHealthData = new HealthData({
       bloodPressure,
       glucoseLevel,
     });
 
-    // Save to the database
+  
     await newHealthData.save();
 
     res.status(201).json({ message: 'Health data added successfully.', data: newHealthData });

@@ -8,7 +8,7 @@ export default function HealthMetricsScreen() {
   const screenWidth = Dimensions.get('window').width;
 
   useEffect(() => {
-    // Simulated data to replace backend fetch
+   
     const simulatedMetrics = {
       timestamps: ['10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM'],
       heartRates: [70, 75, 80, 72, 78],
@@ -18,7 +18,7 @@ export default function HealthMetricsScreen() {
 
     setTimeout(() => {
       setMetrics(simulatedMetrics);
-    }, 1000); // Simulate a delay
+    }, 1000); 
   }, []);
 
   if (!metrics) {

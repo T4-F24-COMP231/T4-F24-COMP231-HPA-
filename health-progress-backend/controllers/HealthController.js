@@ -1,14 +1,11 @@
 const HealthData = require('../models/HealthData');
 
-// In-memory store for demo purposes (replace with DB)
 const healthDataStore = [];
 
-// Get all health data
 exports.getHealthData = (req, res) => {
     res.status(200).json({ message: 'Health data retrieved successfully', data: healthDataStore });
 };
 
-// Create new health data
 exports.createHealthData = (req, res) => {
     const { userId, date, healthMetric, value } = req.body;
 

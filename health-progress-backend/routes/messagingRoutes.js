@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Message = require('../models/message');
 
-// Send a message
 router.post('/messages', async (req, res) => {
   const { senderId, recipientId, message } = req.body;
 
@@ -15,7 +14,6 @@ router.post('/messages', async (req, res) => {
   }
 });
 
-// Fetch chat history
 router.get('/messages/:senderId/:recipientId', async (req, res) => {
   const { senderId, recipientId } = req.params;
 

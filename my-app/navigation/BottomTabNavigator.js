@@ -5,7 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import AppointmentsStackNavigator from './AppointmentsStackNavigator';
 import { Ionicons } from '@expo/vector-icons';
 import SyncNavigator from '../navigation/SyncNavigator';
-import MessagingStackNavigator from './MessagingStackNavigator'; // Messaging Stack
+import MessagingStackNavigator from './MessagingStackNavigator'; 
 import HomeStackNavigator from './HomeStackNavigator';
 import HealthMetricsScreen from '../screens/HealthMetricsScreen';
 
@@ -26,11 +26,11 @@ export default function BottomTabNavigator() {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Appointments') {
 
-            iconName = focused ? 'calendar' : 'calendar-outline'; // Icons for Appointments
+            iconName = focused ? 'calendar' : 'calendar-outline'; 
           } else if (route.name === 'Sync') {
-            iconName = focused ? 'sync' : 'sync-outline'; // Icons for Sync
+            iconName = focused ? 'sync' : 'sync-outline'; 
           } else if (route.name === 'Messages') {
-            iconName = focused ? 'chatbubbles' : 'chatbubbles-outline'; // Icons for Messages
+            iconName = focused ? 'chatbubbles' : 'chatbubbles-outline'; 
 
             iconName = focused ? 'calendar' : 'calendar-outline';
           } else if (route.name === 'HealthDashboard') {

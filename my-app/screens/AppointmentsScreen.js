@@ -68,18 +68,18 @@ export default function AppointmentsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      
       <View style={styles.header}>
         <Text style={styles.watchName}>John's Watch</Text>
         <Text style={styles.profile}>JOHN J</Text>
       </View>
 
-      {/* Confirmation Message */}
+     
       {confirmationMessage ? (
         <Text style={styles.confirmationMessage}>{confirmationMessage}</Text>
       ) : null}
 
-      {/* Appointments Section */}
+     
       <Text style={styles.sectionTitle}>Appointments</Text> 
       <FlatList
         data={appointments}
@@ -108,7 +108,6 @@ export default function AppointmentsScreen() {
         )}
       />
 
-      {/* Add New Appointment Section */}
       <Text style={styles.sectionTitle}>Add New Appointment</Text>
       <TextInput
         style={styles.input}

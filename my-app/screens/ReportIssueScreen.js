@@ -4,16 +4,15 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, ActivityInd
 export default function ReportIssueScreen({ navigation }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false); // Tracks if the form is being submitted
-  const [titleError, setTitleError] = useState(false); // Tracks title validation
-  const [descriptionError, setDescriptionError] = useState(false); // Tracks description validation
-
+  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [titleError, setTitleError] = useState(false); 
+  const [descriptionError, setDescriptionError] = useState(false); 
   const handleSubmit = async () => {
-    // Reset validation errors
+  
     setTitleError(false);
     setDescriptionError(false);
 
-    // Validate fields
+  
     if (!title) setTitleError(true);
     if (!description) setDescriptionError(true);
     if (!title || !description) {
@@ -21,10 +20,10 @@ export default function ReportIssueScreen({ navigation }) {
       return;
     }
 
-    setIsSubmitting(true); // Start submission state
+    setIsSubmitting(true); 
 
     try {
-      const response = await fetch('http://192.168.0.213:5000/api/issues/report', { // Update IP if needed
+      const response = await fetch('http://192.168.0.213:5000/api/issues/report', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,9 +33,9 @@ export default function ReportIssueScreen({ navigation }) {
 
       if (response.ok) {
         Alert.alert('Success', 'Your issue has been reported.');
-        setTitle(''); // Clear form
+        setTitle(''); 
         setDescription('');
-        navigation.goBack(); // Navigate back
+        navigation.goBack(); 
       } else {
         const errorData = await response.json();
         Alert.alert('Error', errorData.message || 'Failed to report issue.');
@@ -45,7 +44,7 @@ export default function ReportIssueScreen({ navigation }) {
       console.error('Error reporting issue:', error);
       Alert.alert('Error', 'An unexpected error occurred.');
     } finally {
-      setIsSubmitting(false); // End submission state
+      setIsSubmitting(false); 
     }
   };
 
@@ -53,34 +52,34 @@ export default function ReportIssueScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Report Technical Issue</Text>
       <TextInput
-        style={[styles.input, titleError && styles.errorInput]} // Highlight input if there's an error
+        style={[styles.input, titleError && styles.errorInput]}
         placeholder="Issue Title"
         placeholderTextColor="#aaa"
         value={title}
         onChangeText={(text) => {
           setTitle(text);
-          if (titleError) setTitleError(false); // Clear error when user starts typing
+          if (titleError) setTitleError(false); 
         }}
       />
-      {titleError && <Text style={styles.errorText}>Title is required.</Text>} {/* Error message for title */}
+      {titleError && <Text style={styles.errorText}>Title is required.</Text>}
       <TextInput
-        style={[styles.input, styles.textArea, descriptionError && styles.errorInput]} // Highlight input if there's an error
+        style={[styles.input, styles.textArea, descriptionError && styles.errorInput]}
         placeholder="Describe your issue in detail"
         placeholderTextColor="#aaa"
         value={description}
         onChangeText={(text) => {
           setDescription(text);
-          if (descriptionError) setDescriptionError(false); // Clear error when user starts typing
+          if (descriptionError) setDescriptionError(false); 
         }}
         multiline
       />
-      {descriptionError && <Text style={styles.errorText}>Description is required.</Text>} {/* Error message for description */}
+      {descriptionError && <Text style={styles.errorText}>Description is required.</Text>} 
       <TouchableOpacity
-        style={[styles.button, isSubmitting && { opacity: 0.5 }]} // Disable button during submission
+        style={[styles.button, isSubmitting && { opacity: 0.5 }]} 
         onPress={!isSubmitting ? handleSubmit : null}
-        disabled={isSubmitting} // Disable button to prevent multiple submissions
+        disabled={isSubmitting} 
       >
-        {isSubmitting ? ( // Show loader when submitting
+        {isSubmitting ? ( 
           <ActivityIndicator size="small" color="#fff" />
         ) : (
           <Text style={styles.buttonText}>Submit</Text>

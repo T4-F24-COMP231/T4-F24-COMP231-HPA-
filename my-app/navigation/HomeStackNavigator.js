@@ -18,12 +18,12 @@ export default function HomeStackNavigator() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerShown: false }} // Hide the header for Home
+        options={{ headerShown: false }} 
       />
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}
-        options={{ headerTitle: 'Profile' }} // Add custom header title
+        options={{ headerTitle: 'Profile' }} 
       />
         <Stack.Screen
         name="ReportIssueScreen"

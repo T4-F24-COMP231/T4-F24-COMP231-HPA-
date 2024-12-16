@@ -4,7 +4,6 @@ const router = express.Router();
     
 router.get('/healthMetrics', async (req, res) => {
   try {
-    // Simulated data fetching (replace with actual database query)
     const healthMetrics = [
       { metric: 'Heart Rate', value: 72 },
       { metric: 'Steps', value: 10000 },

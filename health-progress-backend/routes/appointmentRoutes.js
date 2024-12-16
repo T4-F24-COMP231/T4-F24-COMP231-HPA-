@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Appointment = require('../models/Appointment');
 
-// Schedule an appointment
 router.post('/', async (req, res) => {
     try {
         const { patient, provider, appointmentDate } = req.body;
@@ -16,7 +15,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Reschedule an appointment
 router.put('/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -39,7 +37,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// Cancel an appointment
 router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;

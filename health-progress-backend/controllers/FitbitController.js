@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-// Redirect to Fitbit's authorization page
+
 exports.authorize = (req, res) => {
     const fitbitAuthURL = 'https://www.fitbit.com/oauth2/authorize';
     const queryParams = new URLSearchParams({
@@ -8,7 +8,7 @@ exports.authorize = (req, res) => {
         client_id: process.env.FITBIT_CLIENT_ID,
         redirect_uri: process.env.REDIRECT_URI,
         scope: 'heartrate activity profile oxygen_saturation',
-        expires_in: '86400', // Token expiration in seconds
+        expires_in: '86400', 
     });
 
     res.redirect(`${fitbitAuthURL}?${queryParams}`);
@@ -17,7 +17,7 @@ exports.authorize = (req, res) => {
 const axios = require('axios');
 
 exports.exchangeToken = async (req, res) => {
-    const { code } = req.query; // Extract the authorization code
+    const { code } = req.query; 
 
     if (!code) {
         return res.status(400).json({ error: 'Authorization code is missing' });
@@ -29,8 +29,8 @@ exports.exchangeToken = async (req, res) => {
                 client_id: process.env.FITBIT_CLIENT_ID,
                 client_secret: process.env.FITBIT_CLIENT_SECRET,
                 grant_type: 'authorization_code',
-                redirect_uri: process.env.REDIRECT_URI, // Match the redirect URI
-                code, // Authorization code
+                redirect_uri: process.env.REDIRECT_URI, 
+                code,
             },
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -39,7 +39,7 @@ exports.exchangeToken = async (req, res) => {
 
         const { access_token, refresh_token } = response.data;
 
-        // Store tokens in session
+      
         req.session.accessToken = access_token;
         req.session.refreshToken = refresh_token;
 
@@ -51,7 +51,6 @@ exports.exchangeToken = async (req, res) => {
 };
 
 
-// Fetch Heart Rate Data
 exports.getHeartRateData = async (req, res) => {
     const accessToken = req.session.accessToken;
 
@@ -76,7 +75,7 @@ exports.getHeartRateData = async (req, res) => {
     }
 };
 
-// Fetch Oxygen Saturation Data
+
 exports.getOxygenData = async (req, res) => {
     const accessToken = req.session.accessToken;
 

@@ -7,7 +7,7 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container}>
-      {/* Top Section */}
+     
       <View style={styles.header}>
         <View style={styles.watchSection}>
           <Image
@@ -24,22 +24,22 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Metrics Overview */}
+     
       <Text style={styles.sectionTitle}>Metrics</Text>
       <View style={styles.metricsContainer}>
-        {/* Blood Pressure */}
+       
         <View style={styles.metricCard}>
           <Text style={styles.metricTitle}>Blood Pressure</Text>
           <Text style={styles.metricValue}>117 SYS / 76 DIA / 42 PUL</Text>
         </View>
 
-        {/* Heart Rate */}
+   
         <View style={styles.metricCard}>
           <Text style={styles.metricTitle}>Heart Rate</Text>
           <Text style={styles.metricValue}>84 bpm</Text>
         </View>
 
-        {/* Steps Taken */}
+      
         <View style={styles.metricCard}>
           <Text style={styles.metricTitle}>Steps</Text>
           <Text style={styles.metricValue}>8,000 Steps</Text>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#FF6347', // Use your preferred color
+    backgroundColor: '#FF6347', 
     alignItems: 'center',
     justifyContent: 'center',
   },

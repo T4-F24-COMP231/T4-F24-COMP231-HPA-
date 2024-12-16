@@ -24,7 +24,7 @@ export default function DeviceListScreen() {
         }
         const data = await response.json();
         setAvailableDevices(data.devices);
-        setModalVisible(true); // Open the modal only after fetching devices
+        setModalVisible(true);
     } catch (error) {
         console.error('Error fetching devices:', error);
     }
@@ -38,7 +38,7 @@ const registerDevice = async (deviceId) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        userId: '648d82cfd9e5e1f32bfe67a3', // Replace with dynamic userId
+        userId: '648d82cfd9e5e1f32bfe67a3', 
         deviceId,
       }),
     });
@@ -62,12 +62,10 @@ const registerDevice = async (deviceId) => {
     <View style={styles.container}>
       <Text style={styles.title}>Sync Device</Text>
 
-      {/* Register Device Button */}
       <TouchableOpacity style={styles.registerButton} onPress={fetchDevices}>
         <Text style={styles.registerButtonText}>Discover Devices</Text>
       </TouchableOpacity>
 
-      {/* Modal for Device Selection */}
       <Modal
         animationType="slide"
         transparent={true}

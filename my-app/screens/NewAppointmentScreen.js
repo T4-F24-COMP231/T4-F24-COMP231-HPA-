@@ -32,10 +32,10 @@ export default function NewAppointmentScreen() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: '648d82cfd9e5e1f32bfe67a3', // Replace with dynamic user ID
+          userId: '648d82cfd9e5e1f32bfe67a3', 
           providerId: specialist,
           date: `${date.day}/${date.month}/${date.year}`,
-          time: '10:00 AM', // Static for now, can be made dynamic
+          time: '10:00 AM', 
         }),
       });
 
@@ -53,7 +53,7 @@ export default function NewAppointmentScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+   
       <View style={styles.header}>
         <Text style={styles.watchName}>John's Watch</Text>
         <Text style={styles.profile}>JOHN J</Text>
@@ -61,7 +61,7 @@ export default function NewAppointmentScreen() {
 
       <Text style={styles.title}>New Appointment</Text>
 
-      {/* Specialist Picker */}
+   
       <Text style={styles.label}>Select your specialist</Text>
       <Picker
         selectedValue={specialist}
@@ -74,7 +74,7 @@ export default function NewAppointmentScreen() {
         ))}
       </Picker>
 
-      {/* Date Input */}
+    
       <Text style={styles.label}>When works for you</Text>
       <View style={styles.dateContainer}>
         <TextInput
@@ -100,7 +100,7 @@ export default function NewAppointmentScreen() {
         />
       </View>
 
-      {/* Appointment Type Picker */}
+   
       <Text style={styles.label}>What Type Works Best?</Text>
       <Picker
         selectedValue={appointmentType}
@@ -112,7 +112,7 @@ export default function NewAppointmentScreen() {
         <Picker.Item label="In-Person" value="In-Person" />
       </Picker>
 
-      {/* Location Input */}
+     
       <Text style={styles.label}>Your Location</Text>
       <TextInput
         placeholder="Address"
@@ -122,7 +122,7 @@ export default function NewAppointmentScreen() {
       />
 
      
-      {/* Create Appointment Button */}
+     
       <TouchableOpacity style={styles.createButton} onPress={handleCreateAppointment}>
         <Text style={styles.createButtonText}>Create Your Appointment</Text>
       </TouchableOpacity>

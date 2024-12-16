@@ -3,17 +3,17 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Linking } 
 
 export default function ProfileScreen({ navigation }) {
   const handleReportIssue = () => {
-    navigation.navigate('ReportIssueScreen'); // Navigate to ReportIssueScreen
+    navigation.navigate('ReportIssueScreen'); 
   };
 
   const handleHelp = () => {
     const guideUrl = 'https://www.dropbox.com/scl/fi/slx9r4l98pvejau1lq60s/User-Guide-for-Health-Progress-App.docx?rlkey=1xtq12sv0hvs539t9jkummkav&st=5zjgw024&dl=0'; 
 
-    // Attempt to open the guide URL
+   
     Linking.canOpenURL(guideUrl)
       .then((supported) => {
         if (supported) {
-          Linking.openURL(guideUrl); // Opens the guide in the browser or downloads it
+          Linking.openURL(guideUrl); 
         } else {
           Alert.alert('Error', 'Unable to open the guide. Please try again later.');
         }
@@ -24,7 +24,7 @@ export default function ProfileScreen({ navigation }) {
 
   return (
     <ScrollView style={styles.container}>
-      {/* User Information Section */}
+
       <View style={styles.infoSection}>
         <Text style={styles.title}>John J's Profile</Text>
         <Text style={styles.label}>Name:</Text>
@@ -40,7 +40,7 @@ export default function ProfileScreen({ navigation }) {
         <Text style={styles.value}>1.0.0</Text>
       </View>
 
-      {/* Metrics Section */}
+   
       <View style={styles.metricsSection}>
         <Text style={styles.sectionTitle}>Metrics Overview</Text>
 
@@ -60,7 +60,7 @@ export default function ProfileScreen({ navigation }) {
         </View>
       </View>
 
-      {/* Buttons Section */}
+     
       <View style={styles.buttonSection}>
         <TouchableOpacity style={styles.optionButton} onPress={handleHelp}>
           <Text style={styles.optionText}>Help / How to Use the App</Text>

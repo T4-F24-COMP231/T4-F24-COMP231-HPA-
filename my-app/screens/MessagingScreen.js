@@ -26,7 +26,7 @@ export default function MessagingScreen({ chats }) {
         )}
       />
 
-      {/* Floating Action Button */}
+   
       <TouchableOpacity
         style={styles.fab}
         onPress={() => navigation.navigate('NewMessage')}

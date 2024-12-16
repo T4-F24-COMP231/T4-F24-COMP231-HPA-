@@ -11,14 +11,13 @@ router.post('/syncWearable', async (req, res) => {
     return res.status(403).json({ error: 'Device not authorized.' });
   }
 
-  // Validate input
   if (!userId || !heartRate || !steps || !sleepHours) {
     return res.status(400).json({ error: 'All fields are required.' });
   }
 
   try {
     const objectId = mongoose.Types.ObjectId(userId);
-    // Save wearable data to the database
+ 
     const wearableData = new WearableData({
       userId: objectId,
       heartRate,

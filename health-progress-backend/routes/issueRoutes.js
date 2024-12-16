@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Issue = require('../models/Issue');
 
-// Create a new issue report
 router.post('/report', async (req, res) => {
   const { title, description } = req.body;
 
@@ -20,7 +19,6 @@ router.post('/report', async (req, res) => {
   }
 });
 
-// Get all issue reports (optional, for admin dashboard or debugging)
 router.get('/', async (req, res) => {
   try {
     const issues = await Issue.find().sort({ reportedAt: -1 });

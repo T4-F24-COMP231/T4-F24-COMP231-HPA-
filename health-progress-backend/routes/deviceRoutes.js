@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Device = require('../models/Device');
  
-// Discover Devices
 router.get('/discoverDevices', (req, res) => {
     const availableDevices = [
       { id: 'emulator-12345', name: 'Watch Emulator', compatible: true },
@@ -15,7 +14,6 @@ router.get('/discoverDevices', (req, res) => {
   router.post('/registerDevice', async (req, res) => {
     const { userId, deviceId, deviceName } = req.body;
   
-    // Dummy compatibility check (use real logic as needed)
     const compatibleDevices = ['emulator-12345', 'device-67890'];
     if (!compatibleDevices.includes(deviceId)) {
       return res.status(400).json({ error: 'Device is incompatible.' });
@@ -37,10 +35,9 @@ router.get('/discoverDevices', (req, res) => {
     }
   });
  
-// Get all registered devices
 router.get('/registeredDevices', async (req, res) => {
   try {
-    const devices = await Device.find(); // Fetch all registered devices
+    const devices = await Device.find(); 
     res.status(200).json({ devices });
   } catch (error) {
     console.error('Error fetching registered devices:', error);
