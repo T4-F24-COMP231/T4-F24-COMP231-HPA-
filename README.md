@@ -110,14 +110,13 @@ AI / Predictive Analytics Engine
 
 ---
 
-### ▶️ Backend Setup
+### Backend Setup
 
-```bash
+```
 cd health-progress-backend
 npm install
 npm start
-
----
+```
 
 ## 🛠 Tech Stack
 
@@ -169,8 +168,8 @@ npm start
 ---
 
 ### ▶️ Frontend Setup
-
-```bash
+```
 cd my-app
 npm install
 npm start
+```
