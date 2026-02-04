@@ -119,29 +119,6 @@ npm start
 
 ---
 
-## ✨ Features
-
-### 👤 Patient Features
-- Secure login and authentication
-- Input vital health metrics (heart rate, blood pressure, glucose, temperature, SpO₂)
-- View health trends over time
-- Communicate with healthcare providers
-- Appointment scheduling (planned)
-
-### 🩺 Healthcare Provider Features
-- View real-time patient data
-- Monitor trends and abnormal readings
-- Access patient history
-- Receive alerts for critical conditions
-- Manage appointments (planned)
-
-### 🛠 IT & System Support (Planned)
-- System health monitoring
-- Issue and ticket reporting
-- Performance visibility
-
----
-
 ## 🛠 Tech Stack
 
 ### Frontend
